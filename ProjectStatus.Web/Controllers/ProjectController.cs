@@ -20,7 +20,6 @@ namespace ProjectStatusTracker.Web.Controllers
         public ActionResult Detail(int id)
         {
             var username = User.Identity.Name;
-           // var bugCases = _db.BugCases.Where(b => b.AssignedTo == username);
             var model = _db.Projects.Single(d => d.Id == id);
             ViewBag.BugCaseList = model.BugCases.Where(b => b.AssignedTo == username);
             return View(model);
