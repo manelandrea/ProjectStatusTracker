@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ProjectStatusTracker.Domain.Project>
+
+@{
+    ViewBag.Title = "All Projects";
+}
+
+<h1>@ViewBag.Title</h1>
+<div class="row">
+    <div class="col-sm-4">
+        <ul class="list-group">
+
+            @foreach (var project in Model)
+            {
+                <li class="list-group-item">@Html.ActionLink(project.ProjectName, "detail", "project", new { project.Id }, null)</li>
+            }
+        </ul>
+    </div>
+</div>

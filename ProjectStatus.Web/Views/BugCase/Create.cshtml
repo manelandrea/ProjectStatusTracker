@@ -1,0 +1,117 @@
+﻿@model ProjectStatusTracker.Web.Models.CreateBugCasesViewModel
+@{
+    ViewBag.Title = "Create Bug Case";
+}
+
+<h2>Create Bug Case</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProjectId)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.Label("Assign to:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AssignedTo, (SelectList)ViewBag.ProfileId)
+                @Html.ValidationMessageFor(model => model.AssignedTo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Task Title", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TaskTitle)
+                @Html.ValidationMessageFor(model => model.TaskTitle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Task Details", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.TaskDetails)
+                @Html.ValidationMessageFor(model => model.TaskDetails)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Percent Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PercentStatus)
+                @Html.ValidationMessageFor(model => model.PercentStatus)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Start Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate)
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Projected No of Hours", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProjectedNoOfHours)
+                @Html.ValidationMessageFor(model => model.ProjectedNoOfHours)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Projected Completion Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProjectedCompletionDate)
+                @Html.ValidationMessageFor(model => model.ProjectedCompletionDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Actual No of Hours", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ActualNoOfHours)
+                @Html.ValidationMessageFor(model => model.ActualNoOfHours)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Completion Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompletionDate)
+                @Html.ValidationMessageFor(model => model.CompletionDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Issues or Remarks", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IssuesOrRemarks, new { @class = "textarea" })
+                @Html.ValidationMessageFor(model => model.IssuesOrRemarks)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

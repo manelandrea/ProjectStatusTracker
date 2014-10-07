@@ -1,0 +1,47 @@
+﻿@model ProjectStatusTracker.Domain.Project
+
+@{
+    ViewBag.Title = "Project Status Tracker";
+}
+
+<h2>@Model.ProjectName</h2>
+
+<div>
+    <hr />
+
+    @Html.ActionLink("Create a bug case", "Create", "BugCase", new { ProjectId = @Model.Id }, null)
+    <table class="table table-striped">
+        <tr>
+            <th>Task Title</th>
+            <th>Task Details</th>
+            <th>Percent Status</th>
+            <th>Start Date</th>
+            <th>Projected No Of Hours</th>
+            <th>Projected Completion Date</th>
+            <th>Completion Date</th>
+            <th>Actual No Of Hours</th>
+            <th>Issues Or Remarks</th>
+            <th>Assigned By</th>
+        </tr>
+        @foreach (var bugCase in ViewBag.BugCaseList)
+        {
+            <tr>
+                <td>@bugCase.TaskTitle</td>
+                <td>@bugCase.TaskDetails</td>
+                <td>@bugCase.PercentStatus</td>
+                <td>@bugCase.StartDate</td>
+                <td>@bugCase.ProjectedNoOfHours</td>
+                <td>@bugCase.ProjectedCompletionDate</td>
+                <td>@bugCase.CompletionDate</td>
+                <td>@bugCase.ActualNoOfHours</td>
+                <td>@bugCase.IssuesOrRemarks</td>
+                <td>@bugCase.AssignedBy</td>
+            </tr>
+        }
+    </table>
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
